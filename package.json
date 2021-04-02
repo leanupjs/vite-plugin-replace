@@ -1,0 +1,41 @@
+{
+  "name": "vite-plugin-replace",
+  "version": "0.1.0",
+  "description": "With this plugin text in sourcecode could be replaced before bundling.",
+  "author": "Martin Oppitz <npmjs@martinoppitz.com>",
+  "homepage": "https://leanupjs.org",
+  "license": "MIT",
+  "keywords": [
+    "vite",
+    "plugin",
+    "replace"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leanupjs/leanup.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leanupjs/leanup/issues"
+  },
+  "dependencies": {
+    "kolorist": "1.4.0"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "4.18.0",
+    "@typescript-eslint/parser": "4.18.0",
+    "eslint": "7.22.0",
+    "npm-check-updates": "11.3.0",
+    "prettier": "2.2.1",
+    "typescript": "4.2.3",
+    "vite": "2.1.2"
+  },
+  "peerDependencies": {
+    "vite": "^2"
+  },
+  "scripts": {
+    "prepack": "rm -rf index.* && tsc"
+  },
+  "files": [
+    "index.*"
+  ]
+}
