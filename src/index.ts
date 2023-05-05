@@ -8,6 +8,7 @@ interface ViteReplacement {
 
 export interface VitePluginReplaceConfig {
   replacements: ViteReplacement[];
+  enforce: 'pre' | 'post'
 }
 
 function execSrcReplacements(src: string, replacements: ViteReplacement[]) {
@@ -37,6 +38,7 @@ export function replaceCodePlugin(config: VitePluginReplaceConfig): Plugin {
   if (config === undefined) {
     config = {
       replacements: [],
+      enforce: 'pre'
     };
   } else if ((typeof config === "object" || config !== null) === false) {
     throw new Error(
@@ -46,10 +48,15 @@ export function replaceCodePlugin(config: VitePluginReplaceConfig): Plugin {
     throw new Error(
       `[vite-plugin-replace]: The configuration option 'replacement' is not of type 'Array'.`
     );
+  } else if (["pre", "post"].indexOf(config.enforce) < 0) {
+    throw new Error(
+      `[vite-plugin-replace]: The configuration option 'enforce' must be 'pre' or 'post'.`
+    );
   }
   return {
     name: "transform-file",
-    transform(src) {
+    enforce: config.enforce,
+    transform(src: any) {
       return {
         code: execSrcReplacements(src, config.replacements),
         map: null,

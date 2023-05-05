@@ -20,6 +20,11 @@ interface Replacement {
 | `from` | `regexp` \| `string` | 
 | `to` | `string` \| `string` |
 
+### Additional config
+| Attribute | Type | Description |
+| -- | -- | -- |
+| `enforce` | `pre` \| `post` | 
+
 ## Installation
 
 ```bash
